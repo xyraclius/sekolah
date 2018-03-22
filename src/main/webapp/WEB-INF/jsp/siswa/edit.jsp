@@ -36,113 +36,74 @@
 		<div class="input-group">
 			<span class="input-group-addon"><i class="fa fa-flag"></i></span> <select
 				name="kelas" id="kelas" class="form-control">
-				<!-- Kelas 10 -->
-				<option value="X-1"
-					<c:if test="${siswa.kelas == 'X-1'}">
+				<option value="IPA 1"
+					<c:if test="${siswa.kelas == 'IPA 1'}">
 						<c:out value="selected"/>
-						</c:if>>X-1</option>
+						</c:if>>IPA
+					1</option>
 
-				<option value="X-2"
-					<c:if test="${siswa.kelas == 'X-2'}">
+				<option value="IPA 2"
+					<c:if test="${siswa.kelas == 'IPA 2'}">
 						<c:out value="selected"/>
-						</c:if>>X-2</option>
+						</c:if>>IPA
+					2</option>
 
-				<option value="X-3"
-					<c:if test="${siswa.kelas == 'X-3'}">
+				<option value="IPS 1"
+					<c:if test="${siswa.kelas == 'IPS 1'}">
 						<c:out value="selected"/>
-						</c:if>>X-3</option>
+						</c:if>>IPS
+					1</option>
 
-				<option value="X-4"
-					<c:if test="${siswa.kelas == 'X-4'}">
+				<option value="IPS 2"
+					<c:if test="${siswa.kelas == 'IPS 2'}">
 						<c:out value="selected"/>
-						</c:if>>X-4</option>
-
-				<option value="X-5"
-					<c:if test="${siswa.kelas == 'X-5'}">
-					<c:out value="selected"/>
-					</c:if>>X-5</option>
-
-				<!-- Kelas 11 -->
-				<option value="XI-1"
-					<c:if test="${siswa.kelas == 'XI-1'}">
-						<c:out value="selected"/>
-						</c:if>>XI-1</option>
-
-				<option value="XI-2"
-					<c:if test="${siswa.kelas == 'XI-2'}">
-						<c:out value="selected"/>
-						</c:if>>XI-2</option>
-
-				<option value="XI-3"
-					<c:if test="${siswa.kelas == 'XI-3'}">
-						<c:out value="selected"/>
-						</c:if>>XI-3</option>
-
-				<option value="XI-4"
-					<c:if test="${siswa.kelas == 'XI-4'}">
-						<c:out value="selected"/>
-						</c:if>>XI-4</option>
-
-				<option value="XI-5"
-					<c:if test="${siswa.kelas == 'XI-5'}">
-					<c:out value="selected"/>
-					</c:if>>XI-5</option>
-
-
-				<!-- Kelas 12 -->
-				<option value="XII-1"
-					<c:if test="${siswa.kelas == 'XII-1'}">
-						<c:out value="selected"/>
-						</c:if>>XII-1</option>
-
-				<option value="XII-2"
-					<c:if test="${siswa.kelas == 'XII-2'}">
-						<c:out value="selected"/>
-						</c:if>>XII-2</option>
-
-				<option value="XII-3"
-					<c:if test="${siswa.kelas == 'XII-3'}">
-						<c:out value="selected"/>
-						</c:if>>XII-3</option>
-
-				<option value="XII-4"
-					<c:if test="${siswa.kelas == 'XII-4'}">
-						<c:out value="selected"/>
-						</c:if>>XII-4</option>
-
-				<option value="XII-5"
-					<c:if test="${siswa.kelas == 'XII-5'}">
-					<c:out value="selected"/>
-					</c:if>>XII-5</option>
+						</c:if>>IPS
+					2</option>
 			</select>
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label class="radio" for="Jurusan">Jurusan</label>
+		<label class="radio" for=Tingkat>Tingkat</label>
 		<c:choose>
-			<c:when test="${siswa.jurusan == 'IPA'}">
+			<c:when test="${siswa.tingkat == 'X'}">
 				<div class="radio-inline">
-					<input type="radio" name="jurusan" id="IPA" value="IPA" checked><label
-						for="IPA">IPA</label>
+					<input type="radio" name="tingkat" id="X" value="X" checked>X
 				</div>
-				<div class="radio-inline">
-					<input type="radio" name="jurusan" id="IPS" value="IPS"><label
-						for="IPS">IPS</label>
+				<div class="radio-inline" style="margin-left: 60px;">
+					<input type="radio" name="tingkat" id="XI" value="XI">XI
+				</div>
+				<div class="radio-inline" style="margin-left: 60px;">
+					<input type="radio" name="tingkat" id="XII" value="XII">XII
 				</div>
 			</c:when>
+
+			<c:when test="${siswa.tingkat == 'XI'}">
+				<div class="radio-inline">
+					<input type="radio" name="tingkat" id="X" value="X">X
+				</div>
+				<div class="radio-inline" style="margin-left: 60px;">
+					<input type="radio" name="tingkat" id="XI" value="XI" checked>XI
+				</div>
+				<div class="radio-inline" style="margin-left: 60px;">
+					<input type="radio" name="tingkat" id="XII" value="XII">XII
+				</div>
+			</c:when>
+
 			<c:otherwise>
 				<div class="radio-inline">
-					<input type="radio" name="jurusan" id="IPA" value="IPA"><label
-						for="IPA">IPA</label>
+					<input type="radio" name="tingkat" id="X" value="X">X
 				</div>
-				<div class="radio-inline">
-					<input type="radio" name="jurusan" id="IPS" value="IPS" checked><label
-						for="IPS">IPS</label>
+				<div class="radio-inline" style="margin-left: 60px;">
+					<input type="radio" name="tingkat" id="XI" value="XI">XI
+				</div>
+				<div class="radio-inline" style="margin-left: 60px;">
+					<input type="radio" name="tingkat" id="XII" value="XII" checked>XII
 				</div>
 			</c:otherwise>
 		</c:choose>
 	</div>
+
 
 	<div class="form-group">
 		<label class="radio" for="Jenis Kelamin">Jenis Kelamin</label>
@@ -150,21 +111,21 @@
 			<c:when test="${siswa.jenisKelamin == 'Laki-laki'}">
 				<div class="radio-inline">
 					<input type="radio" name="jenisKelamin" id="Laki-laki"
-						value="Laki-laki" checked><label for="Pria">Laki-laki</label>
+						value="Laki-laki" checked>Laki-laki
 				</div>
-				<div class="radio-inline">
+				<div class="radio-inline" style="margin-left: 18px;">
 					<input type="radio" name="jenisKelamin" id="Perempuan"
-						value="Perempuan"><label for="Perempuan">Perempuan</label>
+						value="Perempuan">Perempuan
 				</div>
 			</c:when>
 			<c:otherwise>
 				<div class="radio-inline">
 					<input type="radio" name="jenisKelamin" id="Laki-laki"
-						value="Laki-laki"><label for="Laki-laki">Laki-laki</label>
+						value="Laki-laki">Laki-laki
 				</div>
 				<div class="radio-inline">
 					<input type="radio" name="jenisKelamin" id="Perempuan"
-						value="Perempuan" checked><label for="Perempuan">Perempuan</label>
+						value="Perempuan" checked>Perempuan
 				</div>
 			</c:otherwise>
 		</c:choose>
@@ -232,3 +193,10 @@
 			title="Perbarui Data">Perbarui</button>
 	</div>
 </form>
+
+<script>
+	$(".input-group.date").datepicker({
+		autoclose : true,
+		todayHighlight : true
+	});
+</script>

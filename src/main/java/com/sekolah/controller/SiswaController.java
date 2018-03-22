@@ -19,12 +19,7 @@ public class SiswaController {
 	@Autowired
 	private SiswaService service;
 
-	@RequestMapping(value = "/")
-	public String home(Model model) {
-		return "/";
-	}
-
-	// panggil halaman utama
+	// panggil halaman utama siswa
 	@RequestMapping(value = "siswa")
 	public String Index(Model model) {
 		return "siswa";

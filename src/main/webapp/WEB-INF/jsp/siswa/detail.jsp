@@ -28,20 +28,20 @@
 	</div>
 
 	<div class="form-group">
+		<label for="Tingkat">Tingkat </label>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-arrows-alt"></i></span>
+			<input id="tingkat" type="text" class="form-control" name="tingkat"
+				value="${siswa.tingkat}" readonly>
+		</div>
+	</div>
+
+	<div class="form-group">
 		<label for="Kelas">Kelas </label>
 		<div class="input-group">
 			<span class="input-group-addon"><i class="fa fa-flag"></i></span> <input
 				id="Kelas" type="text" class="form-control" name="Kelas"
 				value="${siswa.kelas}" readonly>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="Jurusan">Jurusan </label>
-		<div class="input-group">
-			<span class="input-group-addon"><i class="fa fa-arrows-alt"></i></span>
-			<input id="jurusan" type="text" class="form-control" name="jurusan"
-				value="${siswa.jurusan}" readonly>
 		</div>
 	</div>
 

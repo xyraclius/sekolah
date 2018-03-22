@@ -40,34 +40,23 @@
 			<span class="input-group-addon"><i class="fa fa-flag"></i></span> <select
 				name="kelas" id="kelas" class="form-control">
 				<option value="">Pilih Kelas</option>
-				<option value="X-1">X-1</option>
-				<option value="X-2">X-2</option>
-				<option value="X-3">X-3</option>
-				<option value="X-4">X-4</option>
-				<option value="X-5">X-5</option>
-
-				<option value="XI-1">XI-1</option>
-				<option value="XI-2">XI-2</option>
-				<option value="XI-3">XI-3</option>
-				<option value="XI-4">XI-4</option>
-				<option value="XI-5">XI-5</option>
-
-				<option value="XII-1">XII-1</option>
-				<option value="XII-2">XII-2</option>
-				<option value="XII-3">XII-3</option>
-				<option value="XII-4">XII-4</option>
-				<option value="XII-5">XII-5</option>
+				<option value="IPA 1">IPS 1</option>
+				<option value="IPA 2">IPS 2</option>
+				<option value="IPS 1">IPA 1</option>
+				<option value="IPS 2">IPA 2</option>
 			</select>
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="Jurusan">Jurusan </label>
+		<label for="Tingkat">Tingkat </label>
 		<div class="input-group">
 			<label class="radio-inline"> <input type="radio"
-				name="jurusan" value="IPA">IPA
-			</label> <label class="radio-inline" style="margin-left: 50px;"> <input
-				type="radio" name="jurusan" value="IPS">IPS
+				name="tingkat" value="X">X
+			</label> <label class="radio-inline" style="margin-left: 60px;"> <input
+				type="radio" name="tingkat" value="XI">XI
+			</label> <label class="radio-inline" style="margin-left: 60px;"> <input
+				type="radio" name="tingkat" value="XII">XII
 			</label>
 		</div>
 	</div>
@@ -77,7 +66,7 @@
 		<div class="input-group">
 			<label class="radio-inline"> <input type="radio"
 				name="jenisKelamin" value="Laki-laki">Laki-laki
-			</label> <label class="radio-inline" style="margin-left: 20px;"> <input
+			</label> <label class="radio-inline" style="margin-left: 18px;"> <input
 				type="radio" name="jenisKelamin" value="Perempuan">Perempuan
 			</label>
 		</div>
@@ -87,7 +76,7 @@
 		<label for="Agama">Agama </label>
 		<div class="input-group">
 			<span class="input-group-addon"><i class="fa fa-balance-scale"></i></span>
-			<select name="kelas" id="kelas" class="form-control">
+			<select name="agama" id="agama" class="form-control">
 				<option value="">Pilih Agama</option>
 				<option value="Budha">Budha</option>
 				<option value="Hindu">Hindu</option>
@@ -111,9 +100,8 @@
 	<div class="form-group">
 		<label for="Tanggal Lahir">Tanggal Lahir</label>
 		<div class="input-group date" data-date-format="dd-MM-yyyy">
-			<span class="input-group-addon"><i
-				class="fa fa-birthday-cake"></i></span> <input
-				class="form-control" type="text" name="tgl_regis"
+			<span class="input-group-addon"><i class="fa fa-birthday-cake"></i></span>
+			<input class="form-control" type="text" name="tanggalLahir"
 				readonly="readonly">
 		</div>
 	</div>
@@ -153,3 +141,10 @@
 			title="Simpan Data">Simpan</button>
 	</div>
 </form>
+
+<script>
+	$(".input-group.date").datepicker({
+		autoclose : true,
+		todayHighlight : true
+	});
+</script>

@@ -19,11 +19,11 @@ public class SiswaModel {
 	@Column(name = "NAMA_PANGGILAN_SISWA")
 	private String nmPanggilanSiswa;
 
+	@Column(name = "TINGKAT")
+	private String tingkat;
+
 	@Column(name = "KELAS")
 	private String kelas;
-
-	@Column(name = "JURUSAN")
-	private String jurusan;
 
 	@Column(name = "JENIS_KELAMIN")
 	private String jenisKelamin;
@@ -70,20 +70,20 @@ public class SiswaModel {
 		this.nmPanggilanSiswa = nmPanggilanSiswa;
 	}
 
+	public String getTingkat() {
+		return tingkat;
+	}
+
+	public void setTingkat(String tingkat) {
+		this.tingkat = tingkat;
+	}
+
 	public String getKelas() {
 		return kelas;
 	}
 
 	public void setKelas(String kelas) {
 		this.kelas = kelas;
-	}
-
-	public String getJurusan() {
-		return jurusan;
-	}
-
-	public void setJurusan(String jurusan) {
-		this.jurusan = jurusan;
 	}
 
 	public String getJenisKelamin() {

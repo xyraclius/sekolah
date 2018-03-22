@@ -19,8 +19,8 @@
 					<tr>
 						<th>NISN</th>
 						<th>Nama Siswa</th>
+						<th>Tingkat</th>
 						<th>Kelas</th>
-						<th>Jurusan</th>
 						<th>Action</th>
 					</tr>
 				</thead>
@@ -48,11 +48,7 @@
 		</div>
 	</div>
 	<script>
-		$(".input-group.date").datepicker({
-			autoclose : true,
-			todayHighlight : true
-		});
-
+	
 		$(function() {
 			$("#tbl_siswa").DataTable();
 		});

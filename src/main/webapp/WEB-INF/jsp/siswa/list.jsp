@@ -3,8 +3,9 @@
 	<tr>
 		<td>${siswa.nisn}</td>
 		<td>${siswa.nmSiswa}</td>
+		<td>${siswa.tingkat}</td>
 		<td>${siswa.kelas}</td>
-		<td>${siswa.jurusan}</td>
+
 
 		<td>
 			<button type="button" id="btn-edit"
