@@ -43,6 +43,8 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.sekolah.model.SiswaModel</value>
+				<value>com.sekolah.model.PelajaranModel</value>
+				<value>com.sekolah.model.GuruModel</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

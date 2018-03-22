@@ -18,6 +18,11 @@ public class SiswaController {
 
 	@Autowired
 	private SiswaService service;
+	
+	@RequestMapping(value = "/")
+	public String Home(Model model) {
+		return "/";
+	}
 
 	// panggil halaman utama siswa
 	@RequestMapping(value = "siswa")

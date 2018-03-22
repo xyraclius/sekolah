@@ -4,6 +4,8 @@
 	<!-- Any urls that are excluded will never be decorated by Sitemesh -->
 	<excludes>
 		<pattern>/siswa/*</pattern>
+		<pattern>/pelajaran/*</pattern>
+		<pattern>/guru/*</pattern>
 	</excludes>
 
 	<!-- <decorator name="login" page="login.jsp"> <pattern>/login.html</pattern> 
