@@ -19,8 +19,8 @@
 					<tr>
 						<th>NISN</th>
 						<th>Nama Siswa</th>
-						<th>Tingkat</th>
 						<th>Kelas</th>
+						<th>Jenis Kelamin</th>
 						<th>Action</th>
 					</tr>
 				</thead>
@@ -48,12 +48,11 @@
 		</div>
 	</div>
 	<script>
-	
 		$(function() {
 			$("#tbl_siswa").DataTable();
 		});
 
-		//list data Item
+		//list data Siswa
 		function loadData() {
 			$.ajax({
 				url : 'siswa/list.html',
@@ -68,160 +67,110 @@
 		loadData();
 
 		// setelah halaman siap, fuction dijalankan
-		$(document)
-				.ready(
-						function() {
+		$(document).ready(function() {
 
-							// tambah pop up
-							$('#btn-tambah').on(
-									'click',
-									function() {
-										$
-												.ajax({
-													url : 'siswa/add.html',
-													type : 'get',
-													dataType : 'html', //untuk menampilkan halaman
-													success : function(data) {
-														$("#modal-input").find(
-																".modal-body")
-																.html(data);
-														$("#modal-input")
-																.modal('show');
-													}
-												});
-									});
+			// tambah pop up
+			$('#btn-tambah').on('click', function() {
+				$.ajax({
+					url : 'siswa/add.html',
+					type : 'get',
+					dataType : 'html', //untuk menampilkan halaman
+					success : function(data) {
+						$("#modal-input").find(".modal-body").html(data);
+						$("#modal-input").modal('show');
+					}
+				});
+			});
 
-							//Simpan Tambah
-							//Mengambil data dari modal body dengan id="modal-input"
-							//format submit: on('type(submit)', 'nama_form', function(){})
-							$('#modal-input')
-									.on(
-											'submit',
-											'#form-siswa',
-											function() {
-												//on submit karena type="submmit"
-												// jika type="button" --> on click / ...
-												$
-														.ajax({
-															url : 'siswa/save.json',
-															type : 'post', //post untuk type="submit"
-															//untuk save data ke database tambahkan data:...
-															data : $(this)
-																	.serialize(), //seluruh data di .jsp diambil nilainya
-															//karena .serialize --> save.json (untuk save data)
-															dataType : 'json',
-															success : function(
-																	data) {
-																if (data.result == "berhasil") {
-																	$(
-																			"#modal-input")
-																			.modal(
-																					'hide');
-																	alert("Data Item Berhasil Disimpan");
-																	loadData(); //tampil data
-																} else if (data.result == "ubah") {
-																	$(
-																			"#modal-input")
-																			.modal(
-																					'hide');
-																	alert("Data Item Berhasil Diubah");
-																	loadData(); //tampil data
-																} else if (data.result == "hapus") {
-																	$(
-																			"#modal-input")
-																			.modal(
-																					'hide');
-																	alert("Data Item Berhasil Dihapus");
-																	loadData(); //tampil data
-																} else {
-																	$(
-																			"#modal-input")
-																			.modal(
-																					'show');
-																	alert("Maaf, Kode Item "
-																			+ kode_item.value
-																			+ " Sudah Ada..");
-																}
-															}
-														});
-												return false;
-											});
+			//Simpan Tambah
+			//Mengambil data dari modal body dengan id="modal-input"
+			//format submit: on('type(submit)', 'nama_form', function(){})
+			$('#modal-input').on('submit', '#form-siswa', function() {
+				//on submit karena type="submmit"
+				// jika type="button" --> on click / ...
+				$.ajax({
+					url : 'siswa/save.json',
+					type : 'post', //post untuk type="submit"
+					//untuk save data ke database tambahkan data:...
+					data : $(this).serialize(), //seluruh data di .jsp diambil nilainya
+					//karena .serialize --> save.json (untuk save data)
+					dataType : 'json',
+					success : function(data) {
+						if (data.result == "berhasil") {
+							$("#modal-input").modal('hide');
+							alert("Data Siswa Berhasil Disimpan");
+							loadData(); //tampil data
+						} else if (data.result == "ubah") {
+							$("#modal-input").modal('hide');
+							alert("Data Siswa Berhasil Diubah");
+							loadData(); //tampil data
+						} else if (data.result == "hapus") {
+							$("#modal-input").modal('hide');
+							alert("Data Siswa Berhasil Dihapus");
+							loadData(); //tampil data
+						} else {
+							$("#modal-input").modal('show');
+							alert("Maaf, NISN " + nisn.value + " Sudah Ada..");
+						}
+					}
+				});
+				return false;
+			});
 
-							//Detail
-							// function untuk button detail
-							$('#list-data-siswa').on(
-									'click',
-									'#btn-detail',
-									function() {
-										var vId = $(this).val();
-										$
-												.ajax({
-													url : 'siswa/detail.html',
-													type : 'get',
-													data : {
-														nisn : vId
-													},
-													dataType : 'html', //untuk menampilkan halaman
-													success : function(data) {
-														$("#modal-input").find(
-																".modal-body")
-																.html(data);
-														$("#modal-input")
-																.modal('show');
-													}
-												});
-									});
+			//Detail
+			// function untuk button detail
+			$('#list-data-siswa').on('click', '#btn-detail', function() {
+				var vId = $(this).val();
+				$.ajax({
+					url : 'siswa/detail.html',
+					type : 'get',
+					data : {
+						nisn : vId
+					},
+					dataType : 'html', //untuk menampilkan halaman
+					success : function(data) {
+						$("#modal-input").find(".modal-body").html(data);
+						$("#modal-input").modal('show');
+					}
+				});
+			});
 
-							//Edit
-							// function untuk button edit
-							$('#list-data-siswa').on(
-									'click',
-									'#btn-edit',
-									function() {
-										var vId = $(this).val();
-										$
-												.ajax({
-													url : 'siswa/edit.html',
-													type : 'get',
-													data : {
-														nisn : vId
-													},
-													dataType : 'html', //untuk menampilkan halaman
-													success : function(data) {
-														$("#modal-input").find(
-																".modal-body")
-																.html(data);
-														$("#modal-input")
-																.modal('show');
-													}
-												});
-									});
+			//Edit
+			// function untuk button edit
+			$('#list-data-siswa').on('click', '#btn-edit', function() {
+				var vId = $(this).val();
+				$.ajax({
+					url : 'siswa/edit.html',
+					type : 'get',
+					data : {
+						nisn : vId
+					},
+					dataType : 'html', //untuk menampilkan halaman
+					success : function(data) {
+						$("#modal-input").find(".modal-body").html(data);
+						$("#modal-input").modal('show');
+					}
+				});
+			});
 
-							//delete
-							// function untuk button delete
-							$('#list-data-siswa').on(
-									'click',
-									'#btn-delete',
-									function() {
-										var vId = $(this).val();
-										$
-												.ajax({
-													url : 'siswa/delete.html',
-													type : 'get',
-													data : {
-														nisn : vId
-													},
-													dataType : 'html', //untuk menampilkan halaman
-													success : function(data) {
-														$("#modal-input").find(
-																".modal-body")
-																.html(data);
-														$("#modal-input")
-																.modal('show');
-													}
-												});
-									});
-						});
+			//delete
+			// function untuk button delete
+			$('#list-data-siswa').on('click', '#btn-delete', function() {
+				var vId = $(this).val();
+				$.ajax({
+					url : 'siswa/delete.html',
+					type : 'get',
+					data : {
+						nisn : vId
+					},
+					dataType : 'html', //untuk menampilkan halaman
+					success : function(data) {
+						$("#modal-input").find(".modal-body").html(data);
+						$("#modal-input").modal('show');
+					}
+				});
+			});
+		});
 	</script>
 
 </div>

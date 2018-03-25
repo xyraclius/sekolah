@@ -45,6 +45,8 @@
 				<value>com.sekolah.model.SiswaModel</value>
 				<value>com.sekolah.model.PelajaranModel</value>
 				<value>com.sekolah.model.GuruModel</value>
+				<value>com.sekolah.model.KelasModel</value>
+				<value>com.sekolah.model.SppModel</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

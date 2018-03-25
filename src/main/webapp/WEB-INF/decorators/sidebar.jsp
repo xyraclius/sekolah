@@ -12,28 +12,26 @@
 					</span>
 				</a>
 					<ul class="treeview-menu">
+						<li><a href="${contextName}/guru.html" class="menu-item"><i
+								class="fa fa-user"></i>Guru</a></li>
 						<li><a href="${contextName}/siswa.html" class="menu-item"><i
 								class="fa fa-user"></i>Siswa</a></li>
 					</ul></li>
-					
-					<li><a href="#"> <i class="fa fa-file-text-o"></i> <span>Pelajaran</span>
+
+				<li><a href="${contextName}/pelajaran.html" class="menu-item"><i
+						class="fa fa-book"></i>Pelajaran</a></li>
+
+				<li><a href="${contextName}/kelas.html" class="menu-item"><i
+						class="fa fa-building"></i>kelas</a></li>
+
+				<li><a href="#"> <i class="fa fa-money"></i> <span>Pembayaran</span>
 						<span class="pull-right-container"> <i
 							class="fa fa-angle-left pull-right"></i>
 					</span>
 				</a>
 					<ul class="treeview-menu">
-						<li><a href="${contextName}/pelajaran.html" class="menu-item"><i
-								class="fa fa-user"></i>Pelajaran</a></li>
-					</ul></li>
-					
-					<li><a href="#"> <i class="fa fa-file-text-o"></i> <span>Guru</span>
-						<span class="pull-right-container"> <i
-							class="fa fa-angle-left pull-right"></i>
-					</span>
-				</a>
-					<ul class="treeview-menu">
-						<li><a href="${contextName}/guru.html" class="menu-item"><i
-								class="fa fa-user"></i>Guru</a></li>
+						<li><a href="${contextName}/spp.html" class="menu-item"><i
+								class="fa fa-user"></i>SPP</a></li>
 					</ul></li>
 			</ul>
 		</section>

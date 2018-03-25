@@ -6,6 +6,8 @@
 		<pattern>/siswa/*</pattern>
 		<pattern>/pelajaran/*</pattern>
 		<pattern>/guru/*</pattern>
+		<pattern>/kelas/*</pattern>
+		<pattern>/spp/*</pattern>
 	</excludes>
 
 	<!-- <decorator name="login" page="login.jsp"> <pattern>/login.html</pattern> 

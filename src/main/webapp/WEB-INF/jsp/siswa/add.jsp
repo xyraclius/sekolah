@@ -7,9 +7,8 @@
 		<label for="NISN">NISN </label>
 		<div class="input-group">
 			<span class="input-group-addon"><i class="fa fa-id-card"></i></span>
-			<input id="nisn" type="text" class="form-control" name="nisn"
-				placeholder="Nomor Induk Siswa Nasional"
-				onkeypress="return onlyNumeric(event)">
+			<input id="nisn" type="number" class="form-control" name="nisn"
+				placeholder="Nomor Induk Siswa Nasional">
 		</div>
 	</div>
 
@@ -23,41 +22,17 @@
 		</div>
 	</div>
 
-
-	<div class="form-group">
-		<label for="Nama Panggilan Siswa">Nama Panggilan Siswa </label>
-		<div class="input-group">
-			<span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
-			<input id="nmPanggilanSiswa" type="text" class="form-control"
-				name="nmPanggilanSiswa" placeholder="Nama Panggilan Siswa"
-				onkeypress="return onlyAlphabets(event)">
-		</div>
-	</div>
-
 	<div class="form-group">
 		<label for="Kelas">Kelas </label>
 		<div class="input-group">
 			<span class="input-group-addon"><i class="fa fa-flag"></i></span> <select
-				name="kelas" id="kelas" class="form-control">
+				name="kdKelas" id="kdKelas" class="form-control" required>
 				<option value="">Pilih Kelas</option>
-				<option value="IPA 1">IPS 1</option>
-				<option value="IPA 2">IPS 2</option>
-				<option value="IPS 1">IPA 1</option>
-				<option value="IPS 2">IPA 2</option>
+				<c:forEach var="kelas" items="${kelasList}">
+					<option value="${kelas.kdKelas}">${kelas.tingkat}
+						${kelas.nmKelas}</option>
+				</c:forEach>
 			</select>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="Tingkat">Tingkat </label>
-		<div class="input-group">
-			<label class="radio-inline"> <input type="radio"
-				name="tingkat" value="X">X
-			</label> <label class="radio-inline" style="margin-left: 60px;"> <input
-				type="radio" name="tingkat" value="XI">XI
-			</label> <label class="radio-inline" style="margin-left: 60px;"> <input
-				type="radio" name="tingkat" value="XII">XII
-			</label>
 		</div>
 	</div>
 
@@ -65,7 +40,7 @@
 		<label for="Jenis Kelamin">Jenis Kelamin </label>
 		<div class="input-group">
 			<label class="radio-inline"> <input type="radio"
-				name="jenisKelamin" value="Laki-laki">Laki-laki
+				name="jenisKelamin" value="Laki-laki" required>Laki-laki
 			</label> <label class="radio-inline" style="margin-left: 18px;"> <input
 				type="radio" name="jenisKelamin" value="Perempuan">Perempuan
 			</label>
@@ -76,7 +51,7 @@
 		<label for="Agama">Agama </label>
 		<div class="input-group">
 			<span class="input-group-addon"><i class="fa fa-balance-scale"></i></span>
-			<select name="agama" id="agama" class="form-control">
+			<select name="agama" id="agama" class="form-control" required>
 				<option value="">Pilih Agama</option>
 				<option value="Budha">Budha</option>
 				<option value="Hindu">Hindu</option>
@@ -92,7 +67,8 @@
 		<div class="input-group">
 			<span class="input-group-addon"><i class="fa fa-map"></i></span> <input
 				id="tempatLahir" type="text" class="form-control" name="tempatLahir"
-				placeholder="Tempat Lahir" onkeypress="return onlyAlphabets(event)">
+				placeholder="Tempat Lahir" onkeypress="return onlyAlphabets(event)"
+				required>
 		</div>
 	</div>
 
@@ -102,7 +78,7 @@
 		<div class="input-group date" data-date-format="dd-MM-yyyy">
 			<span class="input-group-addon"><i class="fa fa-birthday-cake"></i></span>
 			<input class="form-control" type="text" name="tanggalLahir"
-				readonly="readonly">
+				readonly="readonly" required>
 		</div>
 	</div>
 
@@ -111,16 +87,7 @@
 		<div class="input-group">
 			<span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
 			<input id="alamat" type="text" class="form-control" name="alamat"
-				placeholder="Alamat">
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="Asal Sekolah">Asal Sekolah </label>
-		<div class="input-group">
-			<span class="input-group-addon"><i class="fa fa-building"></i></span>
-			<input id="asalSekolah" type="text" class="form-control"
-				name="asalSekolah" placeholder="Asal Sekolah">
+				placeholder="Alamat" required>
 		</div>
 	</div>
 
@@ -129,22 +96,45 @@
 		<div class="input-group">
 			<span class="input-group-addon"><i class="fa fa-user"></i></span> <input
 				id="nmOrangTua" type="text" class="form-control" name="nmOrangTua"
-				placeholder="Nama Orang Tua">
+				placeholder="Nama Orang Tua" required>
 		</div>
 	</div>
 
+	<div class="form-group">
+		<label for="Pekerjaan Orang Tua">Pekerjaan Orang Tua </label>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
+			<input id="pekerjaanOrangTua" type="text" class="form-control"
+				name="pekerjaanOrangTua" placeholder="Pekerjaan Orang Tua"
+				onkeypress="return onlyAlphabets(event)">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="Telp Orang Tua/Wali Murid">Telp Orang Tua/Wali
+			Murid </label>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-whatsapp"></i></span>
+			<input id="telpOrangTua" type="number" class="form-control"
+				name="telpOrangTua" placeholder="Telp Orang Tua/Wali Murid" required>
+		</div>
+	</div>
 
 	<div class="modal-footer">
 		<button type="button" class="btn btn-danger pull-left"
-			data-dismiss="modal" title="Tutup Form">Tutup</button>
+			data-dismiss="modal" title="Tutup Form">
+			<i class="fa fa-times"></i> Tutup
+		</button>
 		<button type="submit" class="btn btn-success" id="btn_save"
-			title="Simpan Data">Simpan</button>
+			title="Simpan Data">
+			<i class="fa fa-floppy-o"></i> Simpan
+		</button>
 	</div>
 </form>
-
 <script>
 	$(".input-group.date").datepicker({
 		autoclose : true,
 		todayHighlight : true
 	});
 </script>
+

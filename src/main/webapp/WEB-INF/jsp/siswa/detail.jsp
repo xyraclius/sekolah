@@ -9,7 +9,7 @@
 	</div>
 
 	<div class="form-group">
-		<label for="Nama Siswa">Nama Siswa </label>
+		<label for="Nama Lengkap Siswa">Nama Lengkap Siswa </label>
 		<div class="input-group">
 			<span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
 			<input id="nmSiswa" type="text" class="form-control" name="nmSiswa"
@@ -19,29 +19,11 @@
 
 
 	<div class="form-group">
-		<label for="Nama Panggilan Siswa">Nama Panggilan Siswa </label>
-		<div class="input-group">
-			<span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
-			<input id="nmPanggilanSiswa" type="text" class="form-control"
-				name="nmPanggilanSiswa" value="${siswa.nmPanggilanSiswa}" readonly>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="Tingkat">Tingkat </label>
-		<div class="input-group">
-			<span class="input-group-addon"><i class="fa fa-arrows-alt"></i></span>
-			<input id="tingkat" type="text" class="form-control" name="tingkat"
-				value="${siswa.tingkat}" readonly>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="Kelas">Kelas </label>
+		<label for="Nama Kelas">Nama Kelas </label>
 		<div class="input-group">
 			<span class="input-group-addon"><i class="fa fa-flag"></i></span> <input
-				id="Kelas" type="text" class="form-control" name="Kelas"
-				value="${siswa.kelas}" readonly>
+				id="kdKelas" type="text" class="form-control" name="kdKelas"
+				value="${siswa.kelasModel.tingkat} ${siswa.kelasModel.nmKelas}" readonly>
 		</div>
 	</div>
 
@@ -92,20 +74,39 @@
 	</div>
 
 	<div class="form-group">
-		<label for="Asal Sekolah">Asal Sekolah </label>
-		<div class="input-group">
-			<span class="input-group-addon"><i class="fa fa-building"></i></span>
-			<input id="asalSekolah" type="text" class="form-control"
-				name="asalSekolah" value="${siswa.asalSekolah}" readonly>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="Nama Orang Tua">Nama Orang Tua </label>
+		<label for="Nama Orang Tua/Wali Murid">Nama Orang Tua/Wali
+			Murid </label>
 		<div class="input-group">
 			<span class="input-group-addon"><i class="fa fa-user"></i></span> <input
 				id="nmOrangTua" type="text" class="form-control" name="nmOrangTua"
 				value="${siswa.nmOrangTua}" readonly>
 		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="Pekerjaan Orang Tua/Wali Murid">Pekerjaan Orang
+			Tua/Wali Murid </label>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
+			<input id="pekerjaanOrangTua" type="text" class="form-control"
+				name="pekerjaanOrangTua" value="${siswa.pekerjaanOrangTua}" readonly>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="Telp Orang Tua/Wali Murid">Telp Orang Tua/Wali
+			Murid </label>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-whatsapp"></i></span>
+			<input id="telpOrangTua" type="text" class="form-control"
+				name="telpOrangTua" value="${siswa.telpOrangTua}" readonly>
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<button type="button" class="btn btn-danger pull-left"
+			data-dismiss="modal" title="Tutup Form">
+			<i class="fa fa-times"></i> Tutup
+		</button>
 	</div>
 </form>

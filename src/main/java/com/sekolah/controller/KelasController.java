@@ -10,48 +10,49 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sekolah.model.GuruModel;
 import com.sekolah.model.KelasModel;
-import com.sekolah.model.SiswaModel;
+import com.sekolah.service.GuruService;
 import com.sekolah.service.KelasService;
-import com.sekolah.service.SiswaService;
 
 @Controller
-public class SiswaController {
-
-	@Autowired
-	private SiswaService siswaService;
+public class KelasController {
 
 	@Autowired
 	private KelasService kelasService;
 
-	// panggil halaman utama siswa
-	@RequestMapping(value = "siswa")
+	@Autowired
+	private GuruService guruService;
+
+	// panggil halaman utama kelas
+	@RequestMapping(value = "kelas")
 	public String Index(Model model) {
-		return "siswa";
+		return "kelas";
 	}
 
-	@RequestMapping(value = "siswa/add")
+	@RequestMapping(value = "kelas/add")
 	public String add(Model model, HttpServletRequest request) {
-		List<KelasModel> kelasList = null;
+		List<GuruModel> guruList = null;
 		try {
-			kelasList = this.kelasService.list();
-			model.addAttribute("kelasList", kelasList);
+			guruList = this.guruService.list();
+			model.addAttribute("guruList", guruList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "siswa/add";
+		return "kelas/add";
 	}
 
-	// Simpan siswa
-	@RequestMapping(value = "/siswa/save")
-	public String doSave(Model model, @ModelAttribute SiswaModel siswa, HttpServletRequest request) {
+	// Simpan kelas
+	@RequestMapping(value = "/kelas/save")
+	public String doSave(Model model, @ModelAttribute KelasModel kelas, HttpServletRequest request) {
 		String proses = request.getParameter("proses");
 		String result = "";
-		KelasModel kelasModel = null;
-		String kdKelas = siswa.getKdKelas();
+		GuruModel guruModel = null;
+		String nip = kelas.getNip();
+
 		try {
-			kelasModel = this.kelasService.getById(kdKelas);
-			siswa.setKelasModel(kelasModel);
+			guruModel = this.guruService.getById(nip);
+			kelas.setGuruModel(guruModel);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -59,106 +60,106 @@ public class SiswaController {
 		// proses input ke database
 		try {
 			if (proses.equals("insert")) {
-				this.siswaService.insert(siswa);
+				this.kelasService.insert(kelas);
 				result = "berhasil";
 			} else if (proses.equals("update")) {
-				this.siswaService.update(siswa);
+				this.kelasService.update(kelas);
 				result = "ubah";
 			} else if (proses.equals("delete")) {
-				String id = request.getParameter("nisn");
-				siswa = this.siswaService.getById(id);
-				this.siswaService.delete(siswa);
+				String id = request.getParameter("kdKelas");
+				kelas = this.kelasService.getById(id);
+				this.kelasService.delete(kelas);
 				result = "hapus";
 			}
 
 		} catch (Exception e) {
-			// log.error(e.getMessage(), e);
+			e.printStackTrace();
 			result = "gagal";
 		}
 		model.addAttribute("result", result);
 
-		return "/siswa/save";
+		return "/kelas/save";
 	}
 
 	// List
-	// menampilkan data siswa di table siswa
-	@RequestMapping(value = "siswa/list")
+	// menampilkan data kelas di table kelas
+	@RequestMapping(value = "kelas/list")
 	public String doList(Model model) {
 		// membuat object list dari class bahan model
-		List<SiswaModel> siswa = null;
+		List<KelasModel> kelas = null;
 		try {
-			// object siswas diisi data dari method list
-			siswa = this.siswaService.list();
-		} catch (Exception e) {
-			// log.error(e.getMessage(), e);
-		}
-
-		// datanya kita kirim ke view,
-		// kita buat variable list kemudian diisi dengan object siswa
-		model.addAttribute("list", siswa);
-		return "siswa/list";
-	}
-
-	// Edit
-	@RequestMapping(value = "siswa/edit")
-	public String doEdit(Model model, HttpServletRequest request) {
-		List<KelasModel> kelasList = null;
-
-		// menangkap paremeter yang dikirim dari view
-		String id = request.getParameter("nisn");
-		// siapkan object Item model
-		SiswaModel siswa = null;
-		// request ke database
-		try {
-			kelasList = this.kelasService.list();
-			model.addAttribute("kelasList", kelasList);
-			siswa = this.siswaService.getById(id);
+			// object kelas diisi data dari method list
+			kelas = this.kelasService.list();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		// datanya kita kirim ke view,
+		// kita buat variable list kemudian diisi dengan object kelas
+		model.addAttribute("list", kelas);
+		return "kelas/list";
+	}
+
+	// Edit
+	@RequestMapping(value = "kelas/edit")
+	public String doEdit(Model model, HttpServletRequest request) {
+		List<GuruModel> guruList = null;
+
+		// menangkap paremeter yang dikirim dari view
+		String id = request.getParameter("kdKelas");
+		// siapkan object Item model
+		KelasModel kelas = null;
+		// request ke database
+		try {
+			guruList = this.guruService.list();
+			model.addAttribute("guruList", guruList);
+			kelas = this.kelasService.getById(id);
+		} catch (Exception e) {
+			// log.error(e.getMessage(), e);
+		}
 		// datanya kita kirim ke view,
 		// kita buat variable item kemudian diisi dengan object item
-		model.addAttribute("siswa", siswa);
-		return "siswa/edit";
+		model.addAttribute("kelas", kelas);
+		return "kelas/edit";
 	}
 
 	// Detail
-	@RequestMapping(value = "siswa/detail")
+	@RequestMapping(value = "kelas/detail")
 	public String doDetail(Model model, HttpServletRequest request) {
 		// menangkap paremeter yang dikirim dari view
-		String id = request.getParameter("nisn");
+		String id = request.getParameter("kdKelas");
 
-		// siapkan object Siswa model
-		SiswaModel siswa = null;
+		// siapkan object Kelas model
+		KelasModel kelas = null;
 		// request ke database
 		try {
-			siswa = this.siswaService.getById(id);
+			kelas = this.kelasService.getById(id);
 		} catch (Exception e) {
 			// log.error(e.getMessage(), e);
 		}
 		// datanya kita kirim ke view,
 		// kita buat variable item kemudian diisi dengan object item
-		model.addAttribute("siswa", siswa);
+		model.addAttribute("kelas", kelas);
 
 		// memanggil item.jsp
-		return "siswa/detail";
+		return "kelas/detail";
 	}
 
 	// Delete
-	@RequestMapping(value = "siswa/delete")
+	@RequestMapping(value = "kelas/delete")
 	public String delete(Model model, HttpServletRequest request) {
 		// menangkap paremeter yang dikirim dari view
-		String id = request.getParameter("nisn");
+		String id = request.getParameter("kdKelas");
 
 		// siapkan object Item model
-		SiswaModel siswa = null;
+		KelasModel kelas = null;
 		// request ke database
 		try {
-			siswa = this.siswaService.getById(id);
+			kelas = this.kelasService.getById(id);
 		} catch (Exception e) {
 			// log.error(e.getMessage(), e);
 		}
-		model.addAttribute("siswa", siswa);
-		return "siswa/delete";
+		model.addAttribute("kelas", kelas);
+		return "kelas/delete";
 	}
 }

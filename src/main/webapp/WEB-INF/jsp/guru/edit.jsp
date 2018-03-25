@@ -32,7 +32,8 @@
 			<label class="control-label col-md-2">Jenis Kelamin</label>
 			<div class="col-md-6">
 			<div class="form-inline">
-					<input  id="jk" name= "jk" type="radio" value="pria" class="radio" required="required"
+					<input id="jk" name="jk" type="radio" value="Pria" class="radio"
+						required="required"
 						<c:if test="${guru.jk == 'Pria'}">
 								<c:out value="checked"/>
 						</c:if>>Pria
